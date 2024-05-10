@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "ecotourism-perso-iti",
+  "private_key_id": "d4b614608bab4890e4bb32932fff8983ffc0e1b0",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDM8UdY1+f1NPEd\nC4yUF2LOoWyY2AUX+OZpUdthaYxsBk1ZdCSATEWnrUUNmwc6Ng/NBnXnAzQbB97m\norqAqTfYOzJFKwY27G6hgrnbAEIF/l/4IdBQKXe49BdYZMf9DIQHPIOzAPnNyZh3\n9ZoURItPTH2pirFsUiQ1OSFNKCN4SD3BJuFYAeC2dYEqv+JprgGrCxptNyaZ5klB\nRaRracVhfOoEhulpd88S5XtAH0lc/RYC7dsAD28rv28JxZ4LU23Zd3l+oC/ilnV6\nGM13NRjii3cl/kfZY+hdnAUxgE2QDO4aAaWD9RocafzSOdPGQeUvfy94V/gNVEmb\nrKYTIE35AgMBAAECggEACmxQh8AWWeIfC64/UHZWhgIPfQAKlUcpR8y8GrqUo9dX\ntn+ZziUi60Xck9YxQkiG2fN0ymKfMys9rs7yq5G/p3mOQ1aOdrtkXoZAp9bd5MJk\n1OC6YKNVRZSzfcFFaxUof1o4bAGWEt1oidxVwWdhiu9N2lI1lxff482TqCINGMRD\nY4L6bB0ZUQYvmm8OxJRrNKiA+PEqekg2vGGZLsySo7FhaYo9lgVEH0KQ6pBjkYD2\npCD+xIu86GoLkNTNKkBByl66V6ku3teckAZDKpHRqwPrV087cYJAeBt06H8TJfkJ\nyZL1ZN4y07ojvgIPxdLOevkHWtdLxs3705+ca5f9cQKBgQD+VbhuME/dYlCLer2L\nORTaNzg9QX6dEnc0Iia7y9U0xCrZYbxJlaA2YL1cNoqFj2lyqrAcMPSHWTIk0oOb\nnYdat0/jnW+hS2BQ4h8t2D7Sg3UWfD4XA8QVINRwztr8J9EQhkIth2oCs1EU02nO\nx5SYA0tgH/ook1JTOO7oELOu8QKBgQDOSMYeM69Uh9zUiX0gWao2LvYxl9AfWbN+\nuIqc5tXm1hjT5iWtJIcB9ulPZ6S/0ULKNd7D07QO0Wm9jDlIZ1UU60HJ09Lcwb5Y\nKFpOXWGmIYWLW8w/t1HGIkJDtxCuE/5TLQWVlsAq9BZ13wy2TrrzCjwZUXYtZrDC\nlQ2YvlCfiQKBgQC8QrltHufPKJoUVLt/FbagvGUtupA9NlD0Tx86vWvJTjelh1n3\nYgEgn0Urv9eTe4+DaGNJytcGZPjgFs+CXf22IaDKDFx4GTJnTKnlpn8CFnqSNU9E\ne+4l8ZIvGn8wTUzMnYTY7LaE3zTyZHear1MHntCpi6IBbONwZOE6+Dn5EQKBgDNo\nF1c3ch4SrYmZqcECF1ThZyD8wDTP2ddejcyEChI4kH9d/02iqLJoocPUBE55C7fw\nrM8IVvrKXRuLcksE1UMdTYvKaeXxskmt5LNauhb4i5srCT9no81IhFLzsAhxmxOH\nSLj6lHEf2ukM6NIV1Kj0h/2XO2gdCzeyhWznIJhhAoGAFJBjbA4RkahaIy21O84n\n5/430hC2XNRgFVHQpgXCepsPYF4WjzVKfVUUNZ9vG8qzxzNuIz4652XPmVck6hic\nBgsUn1ItJVhIePFWo7PZo1+PHrNC8FvxRwzyfW2Bn5YkcnCjIv0rrUzOCk31BO89\nm35WitEnxWnK3/8ijiQ5z80=\n-----END PRIVATE KEY-----\n",
+  "client_email": "google-sheet-retrieve@ecotourism-perso-iti.iam.gserviceaccount.com",
+  "client_id": "104220126437871496141",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/google-sheet-retrieve%40ecotourism-perso-iti.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
