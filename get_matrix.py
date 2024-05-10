@@ -8,6 +8,7 @@ scopes = ['https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapi
 creds = ServiceAccountCredentials.from_json_keyfile_name('./ecotourism-perso-iti-d4b614608bab.json', scopes)
 client = gspread.authorize(creds)
 spreadsheet = client.open_by_key("1hc4ArEdETsxuGC0aWddBZ7WN00OjuNjbVispnuk9Urs")
+matrix_sheet = spreadsheet.worksheet("Regions")
 
 # Load data from the first sheet
 sheet = spreadsheet.sheet1

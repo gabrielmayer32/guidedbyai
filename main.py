@@ -73,7 +73,10 @@ def generate_itinerary(interests, budget_range, dietary):
 
             {"role": "user", "content": f"User interests: {interests}, budget range: {budget_range}, dietary preferences: {dietary}."},
             {"role": "user", "content": f"Activities: {json.dumps(data)}"},
-            {"role": "user", "content": f"Travel times matrix: {json.dumps(matrix)}"}
+            
+            {"role": "user", "content": f"Travel times matrix for region (each activity has its associated region): {json.dumps(matrix)}"}
+            
+
         ],
         "temperature": 0.3,
         "max_tokens": 600  # Increase this value as needed, but be mindful of the limits
