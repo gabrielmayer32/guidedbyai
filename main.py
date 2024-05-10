@@ -61,13 +61,14 @@ def generate_itinerary(interests, budget_range, dietary):
     "who is interested in ecotourism. Your response should be user-friendly and easy to understand, avoiding technical details like GPS points and precise travel times. Be approximate on these as a toursit is here to enjoy, not racing.   "
     "The itinerary should include a diverse set of activities based on the user's interests, budget, and dietary preferences, and avoid redundancy in activity types (e.g., not more than one beach or museum unless specified by user interests). "
     "Ensure the total itinerary time is under 8 hours and that the route is efficient, avoiding backtracking or redundant paths. Here's what you should include:\n"
-    "1. Morning: Suggest 1-3 activities that match the user's interests. Include the travel times between these activities.\n"
+    "1. Morning: Suggest 1-3 activities that match the user's interests. Include the travel times between these activities. The total time for morning activities must be under or equal to 5 hours.\n"
     "2. Lunch: Recommend a place for lunch that is near the last morning activity and suits the user's dietary preferences, and indicate the travel time from the last morning activity. Do not invent a restaurant. \n"
-    "3. Afternoon: Suggest 1-3 more activities, ensuring they logically follow the lunch location without backtracking.\n"
+    "3. Afternoon: Suggest 1-3 more activities, ensuring they logically follow the lunch location without backtracking. The total time for afternoon activities must be under or equal to 5 hours unless you add a sunset on a beach\n"
     "4. Dinner: Recommend a dinner spot, considering dietary preferences, with travel time from the last afternoon activity.\n"
     "5. Summarize the total travel time and any other relevant information for an enjoyable day. "
     "Note: Volunteering and conservation activities are special; include a note after the itinerary that the user must contact the respective organizations to arrange participation."
-    "You have to return the itierary structures, in an email,html, format with the needed tags etc"
+    "You have to return the itierary structures, in an email,html, format with the needed tags etc. Start with <!DOCTYPE html> and end with </html>"
+    "You don't have to put "
     "Only the email content. No subject or recipient needed. You never show that you are and AI assistant."
     
 )},
