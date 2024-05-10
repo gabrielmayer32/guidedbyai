@@ -56,22 +56,34 @@ def generate_itinerary(interests, budget_range, dietary):
     payload = {
         "model": "gpt-3.5-turbo",
         "messages": [
-            {"role": "system", "content": "You are an assistant tasked with creating a personalized one-day itinerary. The recipient of this message is a first-time visitor to the area who is interested in ecotourism. They have provided the following information to help you create the itinerary. You are writing back to them with the itinerary. \
-             bare in mind that it is an end user reading it so don't put any technical details, gps point or any other technical information."},
+                    {"role": "system", "content": (
+    "You are an AI assistant tasked with creating a personalized one-day itinerary for a first-time visitor to Mauritius, "
+    "who is interested in ecotourism. Your response should be user-friendly and easy to understand, avoiding technical details like GPS points and precise travel times. Be approximate on these as a toursit is here to enjoy, not racing.   "
+    "The itinerary should include a diverse set of activities based on the user's interests, budget, and dietary preferences, and avoid redundancy in activity types (e.g., not more than one beach or museum unless specified by user interests). "
+    "Ensure the total itinerary time is under 8 hours and that the route is efficient, avoiding backtracking or redundant paths. Here's what you should include:\n"
+    "1. Morning: Suggest 1-3 activities that match the user's interests. Include the travel times between these activities.\n"
+    "2. Lunch: Recommend a place for lunch that is near the last morning activity and suits the user's dietary preferences, and indicate the travel time from the last morning activity. Do not invent a restaurant. \n"
+    "3. Afternoon: Suggest 1-3 more activities, ensuring they logically follow the lunch location without backtracking.\n"
+    "4. Dinner: Recommend a dinner spot, considering dietary preferences, with travel time from the last afternoon activity.\n"
+    "5. Summarize the total travel time and any other relevant information for an enjoyable day. "
+    "Note: Volunteering and conservation activities are special; include a note after the itinerary that the user must contact the respective organizations to arrange participation."
+)},
+
             {"role": "user", "content": f"User interests: {interests}, budget range: {budget_range}, dietary preferences: {dietary}."},
             {"role": "user", "content": f"Activities: {json.dumps(data)}"},
             {"role": "user", "content": f"Travel times matrix: {json.dumps(matrix)}"}
         ],
         "temperature": 0.3
     }
+    print("Loaded API Key:", os.getenv('OPENAI_API_KEY'))
     headers = {
         "Content-Type": "application/json",
         "Authorization": f"Bearer {os.getenv('OPENAI_API_KEY')}"
     }
-
+    
     response = requests.post("https://api.openai.com/v1/chat/completions", headers=headers, json=payload)
     response_json = response.json()
-    
+    print(json.dumps(response_json, indent=4))
     if 'choices' in response_json and response_json['choices']:
         message_content = response_json['choices'][0]['message']['content']
         return message_content
