@@ -15,7 +15,7 @@ load_dotenv()
 scopes = ['https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/drive']
 creds = Credentials.from_service_account_file(os.getenv('GOOGLE_CREDENTIALS_FILE'), scopes=scopes)
 gspread_client = gspread.authorize(creds)
-spreadsheet = gspread_client.open_by_key("1hc4ArEdETsxuGC0aWddBZ7WN00OjuNjbVispnuk9Urs")
+spreadsheet = gspread_client.open_by_key(os.getenv("SHEET_KEY"))
 
 # Load data from the spreadsheet
 data_sheet = spreadsheet.sheet1
