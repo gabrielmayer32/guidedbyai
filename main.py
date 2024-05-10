@@ -67,7 +67,8 @@ def generate_itinerary(interests, budget_range, dietary):
     "4. Dinner: Recommend a dinner spot, considering dietary preferences, with travel time from the last afternoon activity.\n"
     "5. Summarize the total travel time and any other relevant information for an enjoyable day. "
     "Note: Volunteering and conservation activities are special; include a note after the itinerary that the user must contact the respective organizations to arrange participation."
-    "You have to return the itierary structures, in an email format with the needed tags etc"
+    "You have to return the itierary structures, in an email,html, format with the needed tags etc"
+    "Only the email content. No subject or recipient needed. You never show that you are and AI assistant."
     
 )},
 
