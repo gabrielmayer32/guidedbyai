@@ -53,7 +53,7 @@ def generate_itinerary(interests, budget_range, dietary):
     ]
 
     system_prompt = (
-    "You are creating a personalized one-day itinerary in HTML format for a visitor to Mauritius interested in ecotourism. "
+    "You are creating a personalized one-day itinerary in HTML format for a visitor to Mauritius interested in ecotourism. Always start with <!DOCTYPE html> and end with </html>. "
     "The itinerary should be engaging and easy to follow, avoiding overly technical details. Use approximate travel times. "
     "The day's activities should vary, avoiding repetitive types unless specifically requested by the user. Ensure the entire day's activities, including travel, fit within 8 hours, avoiding inefficient routing. "
     "Your HTML email content should start with '<!DOCTYPE html>' and end with '</html>'. Here are the key components to include:\n"
@@ -61,7 +61,8 @@ def generate_itinerary(interests, budget_range, dietary):
     "2. Lunch: Suggest a dining spot near the last morning activity that fits the dietary preferences, without inventing a place.\n"
     "3. Afternoon: Recommend 1-3 activities post-lunch, ensuring logical sequence from the dining spot. If adding a sunset at a beach, the total time can extend slightly.\n"
     "4. Dinner: Propose a place for dinner based on dietary needs and close to the last activity.\n"
-    "5. Summary: Provide the total travel time and any additional tips for a pleasant day. "
+    "5. Summary: Provide the total travel time and any additional tips for a pleasant day."
+    "When possible if there is beaches on the itinerary and the it is the user interest, suggest the beach to view on the way to next activity if any."
     "Note: Mention that volunteering and conservation require prior arrangement with the organizations. "
     "Avoid indicating you are an AI. Focus on creating a concise, enjoyable plan for the user."
 )
