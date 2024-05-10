@@ -3,12 +3,17 @@ import gspread
 from google.oauth2.service_account import Credentials
 import requests
 import json
+import os
+from dotenv import load_dotenv
 
 app = Flask(__name__)
 
+# Load environment variables
+load_dotenv()
+
 # Set up Google Sheets access
 scopes = ['https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/drive']
-creds = Credentials.from_service_account_file('./ecotourism-perso-iti-d4b614608bab.json', scopes=scopes)
+creds = Credentials.from_service_account_file(os.getenv('GOOGLE_CREDENTIALS_FILE'), scopes=scopes)
 gspread_client = gspread.authorize(creds)
 spreadsheet = gspread_client.open_by_key("1hc4ArEdETsxuGC0aWddBZ7WN00OjuNjbVispnuk9Urs")
 
@@ -61,32 +66,17 @@ def generate_itinerary(interests, budget_range, dietary):
     }
     headers = {
         "Content-Type": "application/json",
-        "Authorization": "Bearer sk-proj-34sTLTYrblw1BilxkgIVT3BlbkFJq2R2uyXj5PdIjEv0kSCE"
+        "Authorization": f"Bearer {os.getenv('OPENAI_API_KEY')}"
     }
 
     response = requests.post("https://api.openai.com/v1/chat/completions", headers=headers, json=payload)
     response_json = response.json()
     
     if 'choices' in response_json and response_json['choices']:
-        # Extract the first choice's message content directly
         message_content = response_json['choices'][0]['message']['content']
-        return message_content  # Directly use the content without iterating over it
+        return message_content
     else:
         return "No itinerary generated"
-
-@app.route('/create-itinerary', methods=['POST'])
-def api_generate_itinerary():
-    data = request.json
-    interests = data.get('interests', [])
-    budget_range = data.get('budget', "Moderate ($100-$200)")
-    dietary = data.get('dietary', 'Any')
- 
-    itinerary = generate_itinerary(interests, budget_range, dietary)
-    return jsonify({"itinerary": itinerary})
-
-if __name__ == '__main__':
-    app.run(debug=True)
-
 
 @app.route('/create-itinerary', methods=['POST'])
 def api_generate_itinerary():
