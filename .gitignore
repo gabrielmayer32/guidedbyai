@@ -8,5 +8,6 @@ __pycache__/
 # IDE specific files
 .vscode/
 .idea/
-
 .env
+.ecotourism-perso-iti-d4b614608bab.json
+.d
