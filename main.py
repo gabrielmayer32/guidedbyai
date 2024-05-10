@@ -52,37 +52,31 @@ def generate_itinerary(interests, budget_range, dietary):
            (activity.get('Dietary', 'Any') == dietary or not dietary)
     ]
 
-    # Prepare the payload for the OpenAI API request
+    system_prompt = (
+    "You are creating a personalized one-day itinerary in HTML format for a visitor to Mauritius interested in ecotourism. "
+    "The itinerary should be engaging and easy to follow, avoiding overly technical details. Use approximate travel times. "
+    "The day's activities should vary, avoiding repetitive types unless specifically requested by the user. Ensure the entire day's activities, including travel, fit within 8 hours, avoiding inefficient routing. "
+    "Your HTML email content should start with '<!DOCTYPE html>' and end with '</html>'. Here are the key components to include:\n"
+    "1. Morning: List 1-3 activities that align with the user's interests, keeping total time under 5 hours including travel.\n"
+    "2. Lunch: Suggest a dining spot near the last morning activity that fits the dietary preferences, without inventing a place.\n"
+    "3. Afternoon: Recommend 1-3 activities post-lunch, ensuring logical sequence from the dining spot. If adding a sunset at a beach, the total time can extend slightly.\n"
+    "4. Dinner: Propose a place for dinner based on dietary needs and close to the last activity.\n"
+    "5. Summary: Provide the total travel time and any additional tips for a pleasant day. "
+    "Note: Mention that volunteering and conservation require prior arrangement with the organizations. "
+    "Avoid indicating you are an AI. Focus on creating a concise, enjoyable plan for the user."
+)
+
     payload = {
         "model": "gpt-3.5-turbo",
         "messages": [
-                    {"role": "system", "content": (
-    "You are an AI assistant tasked with creating a personalized one-day itinerary that you will send by email for a first-time visitor to Mauritius, "
-    "who is interested in ecotourism. Your response should be user-friendly and easy to understand, avoiding technical details like GPS points and precise travel times. Be approximate on these as a toursit is here to enjoy, not racing.   "
-    "The itinerary should include a diverse set of activities based on the user's interests, budget, and dietary preferences, and avoid redundancy in activity types (e.g., not more than one beach or museum unless specified by user interests). "
-    "Ensure the total itinerary time is under 8 hours and that the route is efficient, avoiding backtracking or redundant paths. Here's what you should include:\n"
-    "1. Morning: Suggest 1-3 activities that match the user's interests. Include the travel times between these activities. The total time for morning activities must be under or equal to 5 hours.\n"
-    "2. Lunch: Recommend a place for lunch that is near the last morning activity and suits the user's dietary preferences, and indicate the travel time from the last morning activity. Do not invent a restaurant. \n"
-    "3. Afternoon: Suggest 1-3 more activities, ensuring they logically follow the lunch location without backtracking. The total time for afternoon activities must be under or equal to 5 hours unless you add a sunset on a beach\n"
-    "4. Dinner: Recommend a dinner spot, considering dietary preferences, with travel time from the last afternoon activity.\n"
-    "5. Summarize the total travel time and any other relevant information for an enjoyable day. "
-    "Note: Volunteering and conservation activities are special; include a note after the itinerary that the user must contact the respective organizations to arrange participation."
-    "You have to return the itierary structures, in an email,html, format with the needed tags etc. Start with <!DOCTYPE html> and end with </html>"
-    "You don't have to put "
-    "Only the email content. No subject or recipient needed. You never show that you are and AI assistant."
-    
-)},
-
+            {"role": "system", "content": system_prompt},
             {"role": "user", "content": f"User interests: {interests}, budget range: {budget_range}, dietary preferences: {dietary}."},
             {"role": "user", "content": f"Activities: {json.dumps(data)}"},
-            
             {"role": "user", "content": f"Travel times matrix for region (each activity has its associated region ID): {json.dumps(matrix)}"}
-            
-
         ],
-        "temperature": 0.3,
-        
+        "temperature": 0.3
     }
+
     print("Loaded API Key:", os.getenv('OPENAI_API_KEY'))
     headers = {
         "Content-Type": "application/json",
