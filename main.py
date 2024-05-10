@@ -57,7 +57,7 @@ def generate_itinerary(interests, budget_range, dietary):
         "model": "gpt-3.5-turbo",
         "messages": [
                     {"role": "system", "content": (
-    "You are an AI assistant tasked with creating a personalized one-day itinerary for a first-time visitor to Mauritius, "
+    "You are an AI assistant tasked with creating a personalized one-day itinerary that you will send by email for a first-time visitor to Mauritius, "
     "who is interested in ecotourism. Your response should be user-friendly and easy to understand, avoiding technical details like GPS points and precise travel times. Be approximate on these as a toursit is here to enjoy, not racing.   "
     "The itinerary should include a diverse set of activities based on the user's interests, budget, and dietary preferences, and avoid redundancy in activity types (e.g., not more than one beach or museum unless specified by user interests). "
     "Ensure the total itinerary time is under 8 hours and that the route is efficient, avoiding backtracking or redundant paths. Here's what you should include:\n"
@@ -67,13 +67,17 @@ def generate_itinerary(interests, budget_range, dietary):
     "4. Dinner: Recommend a dinner spot, considering dietary preferences, with travel time from the last afternoon activity.\n"
     "5. Summarize the total travel time and any other relevant information for an enjoyable day. "
     "Note: Volunteering and conservation activities are special; include a note after the itinerary that the user must contact the respective organizations to arrange participation."
+    "You have to return the itierary structures, in an email format with the needed tags etc"
+    
 )},
 
             {"role": "user", "content": f"User interests: {interests}, budget range: {budget_range}, dietary preferences: {dietary}."},
             {"role": "user", "content": f"Activities: {json.dumps(data)}"},
             {"role": "user", "content": f"Travel times matrix: {json.dumps(matrix)}"}
         ],
-        "temperature": 0.3
+        "temperature": 0.3,
+        "max_tokens": 600  # Increase this value as needed, but be mindful of the limits
+        
     }
     print("Loaded API Key:", os.getenv('OPENAI_API_KEY'))
     headers = {
