@@ -79,7 +79,6 @@ def generate_itinerary(interests, budget_range, dietary):
 
         ],
         "temperature": 0.3,
-        "max_tokens": 600  # Increase this value as needed, but be mindful of the limits
         
     }
     print("Loaded API Key:", os.getenv('OPENAI_API_KEY'))
