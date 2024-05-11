@@ -73,7 +73,7 @@ def generate_itinerary(interests, budget_range, dietary):
         "messages": [
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": f"User interests: {interests}, budget range: {budget_range}, dietary preferences: {dietary}."},
-            {"role": "user", "content": f"Activities: {json.dumps(data)}"},
+            {"role": "user", "content": f"Activities: {json.dumps(filtered_activities)}"},
             {"role": "user", "content": f"Travel times matrix for region (each activity has its associated region ID): {json.dumps(matrix)}"}
         ],
         "temperature": 0.3
